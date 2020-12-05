@@ -14,7 +14,7 @@ public class BidList {
     // TODO: Map columns in data table BIDLIST with corresponding java fields
 	@Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-	private Integer BidListId;
+	private Integer bidListId;
 	@Column(length = 30, nullable = false)
     @NotBlank(message = "Account is mandatory")
 	private String account;
@@ -61,7 +61,6 @@ public class BidList {
 	
 	public BidList(@NotBlank(message = "Account is mandatory") String account,
 			@NotBlank(message = "Type is mandatory") String type, Double bidQuantity) {
-		super();
 		this.account = account;
 		this.type = type;
 		this.bidQuantity = bidQuantity;
@@ -71,10 +70,10 @@ public class BidList {
 
 
 	public Integer getBidListId() {
-		return BidListId;
+		return bidListId;
 	}
 	public void setBidListId(Integer bidListId) {
-		BidListId = bidListId;
+		this.bidListId = bidListId;
 	}
 	public String getAccount() {
 		return account;
@@ -202,6 +201,8 @@ public class BidList {
 	public void setSide(String side) {
 		this.side = side;
 	}
+
+
 	
 	
 
