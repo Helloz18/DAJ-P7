@@ -6,7 +6,6 @@ import com.nnk.springboot.services.BidListService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -51,7 +49,7 @@ public class BidListController {
             Iterable<BidList> allBidList = bidListService.getAllBidList();
             model.addAttribute("allBidList", allBidList);
     	}
-        return "bidList/add";
+        return "bidList/list";
     }
 
     @GetMapping("/bidList/update/{id}")
