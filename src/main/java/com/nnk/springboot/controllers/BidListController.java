@@ -49,6 +49,9 @@ public class BidListController {
             Iterable<BidList> allBidList = bidListService.getAllBidList();
             model.addAttribute("allBidList", allBidList);
     	}
+    	else {
+    		return "bidList/add";
+    	}
         return "bidList/list";
     }
 

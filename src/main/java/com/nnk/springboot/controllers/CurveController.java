@@ -48,7 +48,10 @@ public class CurveController {
     		Iterable<CurvePoint> allCurvePoint = curveService.getAllCurvePoint();
     		model.addAttribute("allCurvePoint", allCurvePoint);
     	}
-        return "curvePoint/list";
+    	else {
+    		return "curvePoint/add";
+    	}
+        return "curvePoint/add";
     }
 
     @GetMapping("/curvePoint/update/{id}")
