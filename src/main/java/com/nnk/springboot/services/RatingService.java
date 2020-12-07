@@ -18,7 +18,7 @@ public class RatingService {
 		return ratingRepo.findAll();
 	}
 	
-	public Rating saveBid(Rating rating) {
+	public Rating saveRating(Rating rating) {
 		return ratingRepo.save(rating);
 	}
 	

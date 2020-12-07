@@ -47,9 +47,7 @@ public class CurveController {
     		curveService.saveCurvePoint(curvePoint);
     		Iterable<CurvePoint> allCurvePoint = curveService.getAllCurvePoint();
     		model.addAttribute("allCurvePoint", allCurvePoint);
-    	}
-    	else {
-    		return "curvePoint/add";
+    		return "redirect:/curvePoint/list";
     	}
         return "curvePoint/add";
     }
@@ -69,8 +67,9 @@ public class CurveController {
     	logger.info("mapping to /curvePoint/update/"+id);
     	if(!result.hasErrors()) {
     		curveService.saveCurvePoint(curvePoint);
+            return "redirect:/curvePoint/list";
     	}
-        return "redirect:/curvePoint/list";
+    	return "curvePoint/update";
     }
 
     @GetMapping("/curvePoint/delete/{id}")

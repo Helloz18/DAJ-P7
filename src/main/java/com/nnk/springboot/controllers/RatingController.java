@@ -43,14 +43,12 @@ public class RatingController {
     public String validate(@Valid Rating rating, BindingResult result, Model model) {
     	logger.info("post mapping to /rating/validate");
     	if(!result.hasErrors()) {
-    		ratingService.saveBid(rating);
+    		ratingService.saveRating(rating);
     		Iterable<Rating> allRating = ratingService.getAllRating();
     		model.addAttribute("allRating", allRating);
-    	}
-    	else {
-    		return "rating/add";
-    	}
-        return "rating/list";
+    		return "redirect:/rating/list";
+    	}    	
+    	return "rating/add";   
     }
 
     @GetMapping("/rating/update/{id}")
@@ -67,11 +65,12 @@ public class RatingController {
                              BindingResult result, Model model) {
     	logger.info("post mapping to /rating/update/"+id);
     	if(!result.hasErrors()) {
-    		ratingService.saveBid(rating);
+    		ratingService.saveRating(rating);
     		Iterable<Rating> allRating = ratingService.getAllRating();
     		model.addAttribute("allRating", allRating);
+            return "redirect:/rating/list";
     	}
-        return "redirect:/rating/list";
+    	return "rating/update";
     }
 
     @GetMapping("/rating/delete/{id}")

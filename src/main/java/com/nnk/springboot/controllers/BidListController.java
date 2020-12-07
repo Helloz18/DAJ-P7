@@ -48,11 +48,9 @@ public class BidListController {
             bidListService.saveBid(bid);           
             Iterable<BidList> allBidList = bidListService.getAllBidList();
             model.addAttribute("allBidList", allBidList);
+            return "redirect:/bidList/list";
     	}
-    	else {
-    		return "bidList/add";
-    	}
-        return "bidList/list";
+    	return "bidList/add";
     }
 
     @GetMapping("/bidList/update/{id}")
@@ -68,11 +66,11 @@ public class BidListController {
     public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList,
                              BindingResult result, Model model) {
     	logger.info("post mapping to /bidList/update/"+id);
-    	if(result.hasErrors()) {
-    		return "bidList/update";
+    	if(!result.hasErrors()) {
+    		bidListService.saveBid(bidList);
+            return "redirect:/bidList/list";
     	}
-    	bidListService.saveBid(bidList);
-        return "redirect:/bidList/list";
+		return "bidList/update";    	
     }
 
     @GetMapping("/bidList/delete/{id}")
