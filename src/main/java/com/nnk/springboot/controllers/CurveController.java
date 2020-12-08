@@ -28,21 +28,21 @@ public class CurveController {
     @RequestMapping("/curvePoint/list")
     public String home(Model model)
     {
-    	logger.info("mapping to /curvePoint/list");
+    	logger.info("get mapping to /curvePoint/list");
     	Iterable<CurvePoint> allCurvePoint = curveService.getAllCurvePoint();
 	    model.addAttribute("allCurvePoint", allCurvePoint);
 	    return "curvePoint/list";
     }
 
     @GetMapping("/curvePoint/add")
-    public String addBidForm(CurvePoint bid) {
-    	logger.info("mapping to /curvePoint/add");
+    public String addCurvePointForm(CurvePoint bid) {
+    	logger.info("get mapping to /curvePoint/add");
         return "curvePoint/add";
     }
 
     @PostMapping("/curvePoint/validate")
     public String validate(@Valid CurvePoint curvePoint, BindingResult result, Model model) {
-    	logger.info("mapping to /curvePoint/validate");
+    	logger.info("post mapping to /curvePoint/validate");
     	if(!result.hasErrors()) {
     		curveService.saveCurvePoint(curvePoint);
     		Iterable<CurvePoint> allCurvePoint = curveService.getAllCurvePoint();
@@ -54,7 +54,7 @@ public class CurveController {
 
     @GetMapping("/curvePoint/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-    	logger.info("mapping to /curvePoint/update/"+id);
+    	logger.info("get mapping to /curvePoint/update/"+id);
     	CurvePoint curvePoint = curveService.getById(id)
     			.orElseThrow(() -> new IllegalArgumentException("Invalid curvePoint Id:" + id));;
     	model.addAttribute("curvePoint", curvePoint);
@@ -62,9 +62,9 @@ public class CurveController {
     }
 
     @PostMapping("/curvePoint/update/{id}")
-    public String updateBid(@PathVariable("id") Integer id, @Valid CurvePoint curvePoint,
+    public String updateCurvePoint(@PathVariable("id") Integer id, @Valid CurvePoint curvePoint,
                              BindingResult result, Model model) {
-    	logger.info("mapping to /curvePoint/update/"+id);
+    	logger.info("post mapping to /curvePoint/update/"+id);
     	if(!result.hasErrors()) {
     		curveService.saveCurvePoint(curvePoint);
             return "redirect:/curvePoint/list";
@@ -73,8 +73,8 @@ public class CurveController {
     }
 
     @GetMapping("/curvePoint/delete/{id}")
-    public String deleteBid(@PathVariable("id") Integer id, Model model) {
-    	logger.info("mapping to /curvePoint/delete/"+id);
+    public String deleteCurvePoint(@PathVariable("id") Integer id, Model model) {
+    	logger.info("get mapping to /curvePoint/delete/"+id);
     	CurvePoint curvePoint = curveService.getById(id)
     			.orElseThrow(() -> new IllegalArgumentException("Invalid curvePoint Id:"+id));
     	curveService.delete(curvePoint);

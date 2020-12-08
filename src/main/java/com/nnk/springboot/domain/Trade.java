@@ -2,22 +2,21 @@ package com.nnk.springboot.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-
 import org.hibernate.validator.constraints.Length;
-
 import java.sql.Timestamp;
-
 
 @Entity
 @Table(name = "trade")
 public class Trade {
-    // TODO: Map columns in data table TRADE with corresponding java fields
+
 	@Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer tradeId;
 	@Column(length = 30, nullable = false)
+	@NotBlank(message = "Account is mandatory")
 	private String account;
 	@Column(length = 30, nullable = false)
+	@NotBlank(message = "Type is mandatory")
 	private String type;
 	private Double buyQuantity;
 	private Double sellQuantity;
@@ -47,10 +46,7 @@ public class Trade {
 	private String sourceListId;
 	@Length(max = 125)
 	private String side;
-	
-	
-	
-	
+
 	public Trade() {
 	}
 
@@ -227,6 +223,4 @@ public class Trade {
 		this.side = side;
 	}
 
-	
-	
 }
