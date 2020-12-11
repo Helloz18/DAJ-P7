@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.sql.Timestamp;
 
 import javax.validation.Valid;
 
@@ -44,6 +45,7 @@ public class CurveController {
     public String validate(@Valid CurvePoint curvePoint, BindingResult result, Model model) {
     	logger.info("post mapping to /curvePoint/validate");
     	if(!result.hasErrors()) {
+    		curvePoint.setCreationDate(new Timestamp(System.currentTimeMillis()));
     		curveService.saveCurvePoint(curvePoint);
     		Iterable<CurvePoint> allCurvePoint = curveService.getAllCurvePoint();
     		model.addAttribute("allCurvePoint", allCurvePoint);

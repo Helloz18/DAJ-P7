@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.sql.Timestamp;
+
 import javax.validation.Valid;
+
 
 @Controller
 public class TradeController {
@@ -43,6 +46,7 @@ public class TradeController {
     public String validate(@Valid Trade trade, BindingResult result, Model model) {
     	logger.info("post mapping to /trade/validate");
     	if(!result.hasErrors()) {
+    		trade.setCreationDate(new Timestamp(System.currentTimeMillis()));;
     		tradeService.saveTrade(trade);
     		Iterable<Trade> allTrade = tradeService.getAllTrade();
     		model.addAttribute("allTrade", allTrade);
@@ -65,6 +69,7 @@ public class TradeController {
                              BindingResult result, Model model) {
     	logger.info("post mapping to /trade/update/"+id);
     	if(!result.hasErrors()) {
+    		trade.setRevisionDate(new Timestamp(System.currentTimeMillis()));
     		tradeService.saveTrade(trade);
     		return "redirect:/trade/list";
     	}

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.sql.Timestamp;
 
 import javax.validation.Valid;
 
@@ -45,6 +46,7 @@ public class BidListController {
     public String validate(@Valid BidList bid, BindingResult result, Model model) {
     	logger.info("post mapping to /bidList/validate");
     	if (!result.hasErrors()) {
+    		bid.setCreationDate(new Timestamp(System.currentTimeMillis()));
             bidListService.saveBid(bid);           
             Iterable<BidList> allBidList = bidListService.getAllBidList();
             model.addAttribute("allBidList", allBidList);
@@ -67,6 +69,7 @@ public class BidListController {
                              BindingResult result, Model model) {
     	logger.info("post mapping to /bidList/update/"+id);
     	if(!result.hasErrors()) {
+    		bidList.setRevisionDate(new Timestamp(System.currentTimeMillis()));
     		bidListService.saveBid(bidList);
             return "redirect:/bidList/list";
     	}
