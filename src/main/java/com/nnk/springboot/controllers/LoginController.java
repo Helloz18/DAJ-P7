@@ -8,20 +8,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("app")
+//@RequestMapping("app") // à quoi sert cette annotation ?
 public class LoginController {
 
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("login")
+    @GetMapping("login") // page login auto-générée via model and view
     public ModelAndView login() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("login");
         return mav;
     }
 
-    @GetMapping("secure/article-details")
+    @GetMapping("secure/article-details") //cette vue existe déjà : user/list : pourquoi y accéder autrement ?
     public ModelAndView getAllUserArticles() {
         ModelAndView mav = new ModelAndView();
         mav.addObject("users", userRepository.findAll());

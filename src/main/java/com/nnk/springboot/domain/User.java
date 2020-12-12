@@ -17,6 +17,8 @@ public class User {
     private String fullname;
     @NotBlank(message = "Role is mandatory")
     private String role;
+    
+    private boolean enabled;
 
     public Integer getId() {
         return id;
@@ -57,4 +59,12 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 }
