@@ -28,13 +28,4 @@ public class LoginController {
         mav.setViewName("user/list");
         return mav;
     }
-
-    @GetMapping("/403")
-    public ModelAndView error() {
-        ModelAndView mav = new ModelAndView();
-        String errorMessage= "You are not authorized for the requested data.";
-        mav.addObject("errorMsg", errorMessage);
-        mav.setViewName("403");
-        return mav;
-    }
 }
