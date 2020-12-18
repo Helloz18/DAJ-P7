@@ -7,7 +7,21 @@
 <body>
 <h3> HOME PAGE </h3>
 <p>
-    <a href="/login">Login</a> or create one <a href="/user/list">User management</a>
+    <span th:if="${#httpServletRequest.isUserInRole('ADMIN')}"> Create a new user : <a href="/user/list">User management</a></span>
+    <div>
+	    Logged in user: <b th:inline="text"  class="user"> [[${#httpServletRequest.remoteUser}]] </b>
+	 
+	 <div th:if="${#httpServletRequest.isUserInRole('ADMIN')}"><a href="/admin/home">Admin Home Page</a></div> 
+	 <div th:if="${#httpServletRequest.isUserInRole('USER')}"><a href="/">User Home Page</a></div> 
+	    <br>
+	    <form th:action="@{/app-logout}" method="POST">
+	         <input type="submit" value="Logout"/>
+	    </form>
+   </div> 	 
+  
+    
+
+
 </p>
 </body>
 </html>
