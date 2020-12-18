@@ -2,17 +2,21 @@ package com.nnk.springboot.controllersTest;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +46,12 @@ public class BidListControllerTest {
 	@MockBean
 	BidListService bidService;
 	
+	@Before
+	public void initTest() {
+		Optional<BidList> bid = Optional.ofNullable(new BidList("an account", "a type", 1.5));
+		given(bidService.getById(1)).willReturn(bid);
+		
+	}
 	
 	@Test
 	public void testGetAllBidList() throws Exception {
@@ -68,6 +78,26 @@ public class BidListControllerTest {
 		    .andExpect(model().attributeHasErrors("bidList"));
 	}
 	
+	@Test
+	public void testGetUpdate() throws Exception {
+		mockMvc.perform(get("/bidList/update/1"))
+			.andExpect(status().isOk())
+			.andDo(print());    
+	}
+	
+	@Test
+	public void testUpdate() throws Exception {
+		mockMvc.perform(post("/bidList/update/1"))
+			.andExpect(status().isOk())
+			.andDo(print());    
+	}
+	
+	@Test
+	public void testDeleteBid() throws Exception {
+		mockMvc.perform(get("/bidList/delete/1"))
+			.andExpect(redirectedUrl("/bidList/list"))
+			.andDo(print());    
+	}
 //	@Test
 //	public void testValidateWithBid() throws Exception {
 //		//GIVEN
