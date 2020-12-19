@@ -2,6 +2,7 @@ package com.nnk.springboot.controllersTest;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -16,7 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class LoginControllerTest {
+public class LoginPageTest {
 
 	@Autowired
 	MockMvc mockMvc;
@@ -25,7 +26,8 @@ public class LoginControllerTest {
 	public void getLogin() throws Exception {
 		mockMvc.perform(get("/login"))
 		.andExpect(status().isOk())
-		.andExpect(content().string(containsString("User"))); 
+		.andExpect(content().string(containsString("User")))
+		.andDo(print()); 
 	}
 
 }

@@ -15,6 +15,10 @@
 			<a href="/rating/list">Ratings</a>&nbsp;|&nbsp;
 			<a href="/trade/list">Trade</a>&nbsp;|&nbsp;
 			<a href="/ruleName/list">Rule</a>
+			<span th:if="${#httpServletRequest.isUserInRole('ADMIN')}">&nbsp;|&nbsp;
+				<a href="/user/list">
+					User management
+				</a>	</span>		
 		</div>
 		<div class="col-6 text-right">
 			Logged in user: <b th:inline="text"  class="user"> [[${#httpServletRequest.remoteUser}]] </b>
@@ -39,7 +43,6 @@
 				</tr>
 			</thead>
 			<tbody>
-			<!-- TODO: Show all CurvePoint to the table, the action column will have Edit & Delete buttons -->
 				<tr th:each="curvePoint : ${allCurvePoint}">
 					<td style="width: 10%" th:text="${curvePoint.id}"></td>
 					<td th:text="${curvePoint.curveId}"></td>
@@ -48,7 +51,6 @@
 					<td style="width: 15%" class="text-center" th:if="${#httpServletRequest.isUserInRole('ADMIN')}">
 						<a th:href="@{/curvePoint/update/{id}(id=${curvePoint.id})}">Edit</a>&nbsp;|&nbsp;
 						<a th:href="@{/curvePoint/delete/{id}(id=${curvePoint.id})}">Delete</a>
-			
 			</tbody>
 		</table>
 	</div>

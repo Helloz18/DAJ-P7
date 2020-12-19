@@ -1,7 +1,10 @@
 package com.nnk.springboot.controllersTest;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,4 +28,19 @@ public class HomeControllerTest {
 	public void getHome() throws Exception {
 		mockMvc.perform(get("/")).andExpect(status().isOk());
 	}
+	
+	@Test
+	public void getAdminHome() throws Exception {
+		mockMvc.perform(get("/admin/home"))
+		.andExpect(redirectedUrl("/bidList/list"))
+		.andDo(print());    
+	}
+	
+	@Test
+	public void getForbidden() throws Exception {
+		mockMvc.perform(get("/forbidden"))
+		.andExpect(view().name("403"))
+		.andDo(print());    
+	}
+	
 }
