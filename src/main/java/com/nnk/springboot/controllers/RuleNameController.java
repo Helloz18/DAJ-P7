@@ -18,7 +18,7 @@ import javax.validation.Valid;
 
 @Controller
 public class RuleNameController {
-    // TODO: Inject RuleName service
+	
 	Logger logger = LoggerFactory.getLogger(RuleNameController.class);
 	
 	@Autowired

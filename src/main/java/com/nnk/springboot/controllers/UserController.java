@@ -42,7 +42,7 @@ public class UserController {
 
     @PostMapping("/user/validate")
     public String validate(@Valid User user, BindingResult result, Model model) {
-        logger.info("post mappint to /user/validate");
+        logger.info("post mapping to /user/validate");
     	if (!result.hasErrors()) {
     		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     		user.setPassword(encoder.encode(user.getPassword()));
@@ -66,6 +66,7 @@ public class UserController {
     @PostMapping("/user/update/{id}")
     public String updateUser(@PathVariable("id") Integer id, @Valid User user,
                              BindingResult result, Model model) {
+    	logger.info("post mapping to /user/update/"+id);
         if (result.hasErrors()) {
             return "user/update";
         }
@@ -80,6 +81,7 @@ public class UserController {
 
     @GetMapping("/user/delete/{id}")
     public String deleteUser(@PathVariable("id") Integer id, Model model) {
+    	logger.info("get mapping to /user/delete/"+id);
         User user = userService.getById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         userService.delete(user);
         model.addAttribute("users", userService.getAllUsers());
