@@ -23,7 +23,7 @@ public class HomeController
 	@RequestMapping("/admin/home")
 	public String adminHome(Model model)
 	{
-		return "redirect:/bidList/list";//si admin : /admin/home = bid list
+		return "redirect:/bidList/list";
 	}
 
 	  @GetMapping("/forbidden")

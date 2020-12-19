@@ -25,7 +25,9 @@
 	</div>
 	<div class="row"><h2>Trade List</h2></div>
 	<div class="row">
-		<a href="/trade/add" class="btn btn-primary btn-sm">Add New</a>
+		<a href="/trade/add" class="btn btn-primary btn-sm" th:if="${#httpServletRequest.isUserInRole('ADMIN')}">
+			Add New
+		</a>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -33,7 +35,7 @@
 					<th>Account</th>
 					<th>Type</th>
 					<th>Buy Quantity</th>
-					<th>Action</th>
+					<th th:if="${#httpServletRequest.isUserInRole('ADMIN')}">Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -42,7 +44,7 @@
 					<td th:text="${trade.account}"></td>
 					<td th:text="${trade.type}"></td>
 					<td th:text="${trade.buyQuantity}"></td>
-					<td style="width: 15%" class="text-center">
+					<td style="width: 15%" class="text-center" th:if="${#httpServletRequest.isUserInRole('ADMIN')}">
 						<a th:href="@{/trade/update/{id}(id=${trade.tradeId})}">Edit</a>&nbsp;|&nbsp;
 						<a th:href="@{/trade/delete/{id}(id=${trade.tradeId})}">Delete</a>
 					</td>

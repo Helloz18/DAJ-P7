@@ -22,7 +22,7 @@ public class UserService {
 		return userRepo.save(user);
 	}
 	
-	public Optional<User> getById(int id) {
+	public Optional<User> getById(Integer id) {
 		return userRepo.findById(id);
 	}
 	

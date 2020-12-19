@@ -25,7 +25,9 @@
 	</div>
 	<div class="row"><h2>Rule List</h2></div>
 	<div class="row">
-		<a href="/ruleName/add" class="btn btn-primary btn-sm">Add New</a>
+		<a href="/ruleName/add" class="btn btn-primary btn-sm" th:if="${#httpServletRequest.isUserInRole('ADMIN')}">
+			Add New
+		</a>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -36,7 +38,7 @@
 					<th>template</th>
 					<th>sql</th>
 					<th>sqlPart</th>
-					<th>Action</th>
+					<th th:if="${#httpServletRequest.isUserInRole('ADMIN')}">Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -48,7 +50,7 @@
 					<td th:text="${ruleName.template}"></td>
 					<td th:text="${ruleName.sqlStr}"></td>
 					<td th:text="${ruleName.sqlPart}"></td>
-					<td style="width: 15%" class="text-center">
+					<td style="width: 15%" class="text-center" th:if="${#httpServletRequest.isUserInRole('ADMIN')}">
 						<a th:href="@{/ruleName/update/{id}(id=${ruleName.id})}">Edit</a>&nbsp;|&nbsp;
 						<a th:href="@{/ruleName/delete/{id}(id=${ruleName.id})}">Delete</a>
 					</td>

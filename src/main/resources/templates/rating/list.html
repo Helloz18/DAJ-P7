@@ -27,7 +27,9 @@
 			<h2>Rating List</h2>
 		</div>
 		<div class="row">
-			<a href="/rating/add" class="btn btn-primary btn-sm">Add New</a>
+			<a href="/rating/add" class="btn btn-primary btn-sm"th:if="${#httpServletRequest.isUserInRole('ADMIN')}">
+				Add New
+			</a>
 			<table class="table table-bordered">
 				<thead>
 					<tr>
@@ -36,7 +38,7 @@
 						<th>SandPRating</th>
 						<th>FitchRating</th>
 						<th>Order</th>
-						<th>Action</th>
+						<th th:if="${#httpServletRequest.isUserInRole('ADMIN')}">Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -46,8 +48,8 @@
 						<td th:text="${rating.sandPRating}"></td>
 						<td th:text="${rating.fitchRating}"></td>
 						<td th:text="${rating.orderNumber}"></td>
-						<td style="width: 15%" class="text-center"><a
-							th:href="@{/rating/update/{id}(id=${rating.id})}">Edit</a>&nbsp;|&nbsp;
+						<td style="width: 15%" class="text-center" th:if="${#httpServletRequest.isUserInRole('ADMIN')}">
+							<a th:href="@{/rating/update/{id}(id=${rating.id})}">Edit</a>&nbsp;|&nbsp;
 							<a th:href="@{/rating/delete/{id}(id=${rating.id})}">Delete</a></td>
 					</tr>
 				</tbody>

@@ -21,7 +21,7 @@ public class LoginController {
         return mav;
     }
 
-    @GetMapping("secure/article-details") //cette vue existe déjà : user/list : pourquoi y accéder autrement ?
+    @GetMapping("secure/article-details") 
     public ModelAndView getAllUserArticles() {
         ModelAndView mav = new ModelAndView();
         mav.addObject("users", userRepository.findAll());

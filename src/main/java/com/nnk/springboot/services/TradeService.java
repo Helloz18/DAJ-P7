@@ -22,7 +22,7 @@ public class TradeService {
 		return tradeRepo.save(trade);
 	}
 	
-	public Optional<Trade> getById(int id) {
+	public Optional<Trade> getById(Integer id) {
 		return tradeRepo.findById(id);
 	}
 	

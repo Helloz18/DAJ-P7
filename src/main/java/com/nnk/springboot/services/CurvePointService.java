@@ -22,7 +22,7 @@ public class CurvePointService {
 		return curvePointRepo.save(curvePoint);
 	}
 	
-	public Optional<CurvePoint> getById(int id) {
+	public Optional<CurvePoint> getById(Integer id) {
 		return curvePointRepo.findById(id);
 	}
 	

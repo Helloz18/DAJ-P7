@@ -22,7 +22,7 @@ public class RuleNameService {
 		return ruleNameRepo.save(ruleName);
 	}
 
-	public Optional<RuleName> getById(int id) {
+	public Optional<RuleName> getById(Integer id) {
 		return ruleNameRepo.findById(id);
 	}
 

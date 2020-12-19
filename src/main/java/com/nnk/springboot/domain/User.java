@@ -23,8 +23,32 @@ public class User {
     private String role;
     
     private boolean enabled;
+    
+    
 
-    public Integer getId() {
+    public User() {
+	}
+
+    
+    
+	public User(@NotBlank(message = "Username is mandatory") String username,
+			@NotBlank(message = "Password is mandatory")
+			@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*(_|[^\\w])).{8,}$", 
+				message = 
+				"Password should have an Uppercase, a LowerCase, a digit, a symbol and be 8 character long minimun.") 
+				String password,
+			@NotBlank(message = "FullName is mandatory") String fullname,
+			@NotBlank(message = "Role is mandatory") String role, boolean enabled) {
+		this.username = username;
+		this.password = password;
+		this.fullname = fullname;
+		this.role = role;
+		this.enabled = enabled;
+	}
+
+
+
+	public Integer getId() {
         return id;
     }
 

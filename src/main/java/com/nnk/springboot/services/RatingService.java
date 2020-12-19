@@ -22,7 +22,7 @@ public class RatingService {
 		return ratingRepo.save(rating);
 	}
 	
-	public Optional<Rating> getById(int id) {
+	public Optional<Rating> getById(Integer id) {
 		return ratingRepo.findById(id);
 	}
 	

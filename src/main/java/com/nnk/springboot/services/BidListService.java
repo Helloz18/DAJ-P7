@@ -22,7 +22,7 @@ public class BidListService {
 		return bidListRepo.save(bid);
 	}
 	
-	public Optional<BidList> getById(int id) {
+	public Optional<BidList> getById(Integer id) {
 		return bidListRepo.findById(id);
 	}
 	
