@@ -17,6 +17,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
+/**
+ * This controller is used to define every path to interact with a Rating.
+ * get all
+ * add a rating form
+ * validate the form
+ * show an update form
+ * update the rating
+ * delete a rating
+ * @author hfx28
+ *
+ */
 public class RatingController {
 	
 	Logger logger = LoggerFactory.getLogger(RatingController.class);

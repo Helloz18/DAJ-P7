@@ -17,6 +17,10 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
     Logger logger = LoggerFactory.getLogger(CustomAccessDeniedHandler.class);
    
+    /**
+     * This method is called when a user try to reach a URL without having a granted access.
+     * return the 403 page through the /forbidden path.
+     */
     @Override
     public void handle(
       HttpServletRequest request,

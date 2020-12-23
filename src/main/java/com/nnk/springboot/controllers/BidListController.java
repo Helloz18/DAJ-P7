@@ -20,6 +20,17 @@ import javax.validation.Valid;
 
 
 @Controller
+/**
+ * This controller is used to define every path to interact with a BidList.
+ * get all
+ * add a bidList form
+ * validate the form
+ * show an update form
+ * update the bidList
+ * delete a bidList
+ * @author hfx28
+ *
+ */
 public class BidListController {
 	
 	Logger logger = LoggerFactory.getLogger(BidListController.class);

@@ -64,7 +64,7 @@ public class TradeControllerTest {
 	}
 	
 	@Test
-	public void testValidateWithError() throws Exception {
+	public void testValidateWithoutError() throws Exception {
 		mockMvc.perform(post("/trade/validate"))
 		    .andExpect(status().isOk())
 		    .andExpect(model().attributeHasErrors("trade"));

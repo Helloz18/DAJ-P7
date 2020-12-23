@@ -18,6 +18,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
+/**
+ * This controller is used to define every path to interact with a User.
+ * get all
+ * add a user form
+ * validate the form
+ * show an update form
+ * update the user
+ * delete a user
+ * @author hfx28
+ *
+ */
 public class UserController {
 	
 	Logger logger = LoggerFactory.getLogger(UserController.class);

@@ -20,6 +20,17 @@ import javax.validation.Valid;
 
 
 @Controller
+/**
+ * This controller is used to define every path to interact with a Trade.
+ * get all
+ * add a trade form
+ * validate the form
+ * show an update form
+ * update the trade
+ * delete a trade
+ * @author hfx28
+ *
+ */
 public class TradeController {
 	
 	Logger logger = LoggerFactory.getLogger(TradeController.class);

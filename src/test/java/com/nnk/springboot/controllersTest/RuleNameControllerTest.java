@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import java.util.Optional;
 
@@ -74,6 +75,7 @@ public class RuleNameControllerTest {
 		.andExpect(redirectedUrl("/ruleName/list"))
 		.andDo(print());    
 	}
+	
 	
 	@Test
 	public void testDeleteRuleName() throws Exception {

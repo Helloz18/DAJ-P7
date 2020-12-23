@@ -17,6 +17,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
+/**
+ * This controller is used to define every path to interact with a RuleName.
+ * get all
+ * add a ruleName form
+ * validate the form
+ * show an update form
+ * update the ruleName
+ * delete a ruleName
+ * @author hfx28
+ *
+ */
 public class RuleNameController {
 	
 	Logger logger = LoggerFactory.getLogger(RuleNameController.class);

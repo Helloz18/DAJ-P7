@@ -19,6 +19,17 @@ import java.sql.Timestamp;
 import javax.validation.Valid;
 
 @Controller
+/**
+ * This controller is used to define every path to interact with a CurvePoint.
+ * get all
+ * add a curvePoint form
+ * validate the form
+ * show an update form
+ * update the curvePoint
+ * delete a curvePoint
+ * @author hfx28
+ *
+ */
 public class CurveController {
 	
 	Logger logger = LoggerFactory.getLogger(CurveController.class);
